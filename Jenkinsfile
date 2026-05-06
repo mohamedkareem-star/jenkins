@@ -5,14 +5,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "yourdockerhubusername/flask-app"
+        DOCKER_IMAGE = "mohamedkareem/flask-app"
     }
 
     stages {
 
         stage('Clone') {
             steps {
-                git 'https://github.com/yourusername/yourrepo.git'
+                git 'https://github.com/mohamedkareem-star/jenkins.git'
             }
         }
 
