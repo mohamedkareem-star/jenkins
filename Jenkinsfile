@@ -9,9 +9,10 @@ pipeline {
 
     stages {
 
-        stage('Clean Workspace') {
+        stage('Checkout') {
             steps {
-                cleanWs()
+                // Jenkins does this automatically, but this makes it explicit
+                checkout scm
             }
         }
 
@@ -29,9 +30,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh """
-                docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
-                """
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
 
@@ -62,10 +61,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ CI/CD Pipeline Completed Successfully!"
+            echo "✅ CI/CD Pipeline Successful"
         }
         failure {
-            echo "❌ Pipeline Failed - Check logs"
+            echo "❌ Pipeline Failed"
         }
     }
 }
