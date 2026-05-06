@@ -10,11 +10,7 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git 'https://github.com/mohamedkareem-star/jenkins.git'
-            }
-        }
+        
 
         stage('Install Dependencies') {
             steps {
